@@ -18,7 +18,11 @@ class TestComponent {}
 
 describe('MyButtonDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
-  let debugElements: DebugElement[];
+
+  let defaultButton: DebugElement;
+  let customBackgroundButton: DebugElement;
+  let customFontColorButton: DebugElement;
+  let completelyCustomizedButton: DebugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -29,56 +33,51 @@ describe('MyButtonDirective', () => {
 
     fixture.detectChanges();
 
-    debugElements = fixture.debugElement.queryAll(
-      By.directive(MyButtonDirective)
-    );
+    [
+      defaultButton,
+      customFontColorButton,
+      customBackgroundButton,
+      completelyCustomizedButton,
+    ] = fixture.debugElement.queryAll(By.directive(MyButtonDirective));
   });
 
   describe('default button', () => {
     it("background's button should be blue", () => {
-      const defaultButton = debugElements[0];
       expect(defaultButton.nativeElement.style.background).toBe('blue');
     });
 
     it("font color's button should be white", () => {
-      const defaultButton = debugElements[0];
       expect(defaultButton.nativeElement.style.color).toBe('white');
     });
   });
 
   describe('custom font color button', () => {
     it("background's button should be blue", () => {
-      const defaultButton = debugElements[1];
-      expect(defaultButton.nativeElement.style.background).toBe('blue');
+      expect(customFontColorButton.nativeElement.style.background).toBe('blue');
     });
 
     it("font color's button should be white", () => {
-      const defaultButton = debugElements[1];
-      expect(defaultButton.nativeElement.style.color).toBe('green');
+      expect(customFontColorButton.nativeElement.style.color).toBe('green');
     });
   });
 
   describe('custom background button', () => {
     it("background's button should be blue", () => {
-      const defaultButton = debugElements[2];
-      expect(defaultButton.nativeElement.style.background).toBe('pink');
+      expect(customBackgroundButton.nativeElement.style.background).toBe('pink');
     });
 
     it("font color's button should be white", () => {
-      const defaultButton = debugElements[2];
-      expect(defaultButton.nativeElement.style.color).toBe('white');
+      expect(customBackgroundButton.nativeElement.style.color).toBe('white');
     });
   });
 
   describe('button with background and font color customized', () => {
     it("background's button should be blue", () => {
-      const defaultButton = debugElements[3];
-      expect(defaultButton.nativeElement.style.background).toBe('purple');
+      expect(completelyCustomizedButton.nativeElement.style.background).toBe('purple');
     });
 
     it("font color's button should be white", () => {
-      const defaultButton = debugElements[3];
-      expect(defaultButton.nativeElement.style.color).toBe('black');
+      expect(completelyCustomizedButton.nativeElement.style.color).toBe('black');
     });
   });
 });
