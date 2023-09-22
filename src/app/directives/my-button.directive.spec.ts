@@ -56,13 +56,13 @@ describe('MyButtonDirective', () => {
       expect(customFontColorButton.nativeElement.style.background).toBe('blue');
     });
 
-    it("font color's button should be white", () => {
+    it("font color's button should be green", () => {
       expect(customFontColorButton.nativeElement.style.color).toBe('green');
     });
   });
 
   describe('custom background button', () => {
-    it("background's button should be blue", () => {
+    it("background's button should be pink", () => {
       expect(customBackgroundButton.nativeElement.style.background).toBe('pink');
     });
 
